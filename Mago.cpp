@@ -1,5 +1,6 @@
 #include "Mago.h"
 #include <string>
+// clase simple 
 Mago::Mago(string Nombre, string TipodeMago, int Poder, int Velocidad, int Resistencia, int Ataque, int vida) :
 	Nombre(Nombre), TipodeMago(TipodeMago), Poder(Poder), Velocidad(Velocidad), Resistencia(Resistencia), Ataque(Ataque), vida(vida)
 {}
@@ -74,5 +75,5 @@ void Mago::setvida(int vida)
 }
 string Mago::Tostring()
 {
-	return "Mago{ " + Nombre + "\nTipo De Mago: " + TipodeMago + "\nPoder: " + to_string(Poder) + "\nVelocidad: " + to_string(Velocidad) + "\nResistencia: " + to_string(Resistencia) + "\nAtaque: " + to_string(Ataque)+ "\n Vida: " + to_string(vida);
+	return "Mago " + Nombre + "\nTipo De Mago: " + TipodeMago + "\nPoder: " + to_string(Poder) + "\nVelocidad: " + to_string(Velocidad) + "\nResistencia: " + to_string(Resistencia) + "\nAtaque: " + to_string(Ataque)+ "\n Vida: " + to_string(vida)+ "\n";
 }

@@ -4,13 +4,13 @@ using namespace std;
 class Mago
 {
 private:
-	string Nombre;
-	string TipodeMago;
-	int Poder;
-	int Velocidad;
-	int Resistencia;
-	int Ataque;
-	int vida;
+	string Nombre ="";
+	string TipodeMago="";
+	int Poder=0;
+	int Velocidad=0;
+	int Resistencia=0;
+	int Ataque=0;
+	int vida=0;
 public:
 	Mago(string Nombre, string TipodeMago, int Poder, int Velocidad, int Resistencia, int Ataque, int vida); 
 	Mago(); 
