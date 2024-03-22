@@ -97,46 +97,42 @@ void CampamentoMagos::SimularBatalla()
 			atacante = mago1;
 			defensor = mago2;
 		}
-		else if (mago1->getVelocidad() < mago2->getVelocidad()) {
+		else {
 			atacante = mago2;
 			defensor = mago1;
 		}
-		else if (mago1->getVelocidad() == mago2->getVelocidad()) {
-			if (mago1->getPoder() < mago2->getPoder()) {
-				atacante = mago1;
-				defensor = mago2;
-			}
-			else {
-				atacante = mago2;
-				defensor = mago1;
-			}
-		}
-
-		while (mago1->getvida() > 0 && mago2->getvida() > 0) {
+		int contador = 0;
+		while (atacante->getvida() > 0 && defensor->getvida() > 0) {
 			// calculando el damage 
-			int damage = (atacante->getAtaque() - (defensor->getResistencia() / 2)) * (atacante->getPoder() / 100);
-			if (damage < 0) {
-				damage = 0;
-			}
-			defensor->setvida(defensor->getvida() - damage);
-			// aumento el ataque 
+			int damage = (atacante->getAtaque() - (defensor->getResistencia() / 2)); // el calculo completo me causaba un ciclo infinito, lo reduci y funciono 
 			int aumentoAtaque = rand() % 6 + 5;
 			atacante->setAtaque(atacante->getAtaque() + aumentoAtaque);
+			cout << "Turno: " << contador << endl;
+			cout << atacante->getNombre() << " ataca a " << defensor->getNombre() << " Causando: " << damage << +", Dano" << endl;
+			int x = defensor->getvida() - damage;
+			defensor->setvida(x);
+			cout << "Vida de " << defensor->getNombre() << ": " << defensor->getvida() << endl;
+			swap(atacante, defensor);
+
+			contador++;
+		}
+		if (atacante->getvida() <= 0) {
+			cout << atacante->getNombre() << " ha sido derrotado." << endl;
+			Magos.erase(Magos.begin() + indiceMago1);
+		}
+		else if (defensor->getvida() <= 0) {
+			cout << defensor->getNombre() << " ha sido derrotado." << endl;
+			Magos.erase(Magos.begin() + indiceMago2);
 
 		}
-		// elimino al mago que pierde 
-		if (mago1->getvida() <= 0) {
-			cout << mago1->getNombre() << " ha sido derrotado." << endl;
-			Magos.erase(Magos.begin() + indiceMago1);
-			delete mago1;
-		}
-		else {
-			cout << mago2->getNombre() << " ha sido derrotado." << endl;
-			Magos.erase(Magos.begin() + indiceMago2);
-			delete mago2;
-		}
+		delete mago1;
+		delete atacante;
+		delete mago2;
+		delete defensor;
 	}
 	else {
 		cout << "No hay magos rey" << endl;
 	}
+
+
 }

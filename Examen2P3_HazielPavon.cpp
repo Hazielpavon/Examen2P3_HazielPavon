@@ -190,15 +190,18 @@ void ejercicio1() {
 			break;
 		}
 		case 3: {
+			cout << "Lista de Magos: " << endl; 
 			Campamento->ListarMagos();
 			break;
 		}
 		case 4: {
 			Campamento->GuardarMagos();
+			cout << "Se guardaron Correctamente los magos: " << endl;
 			break;
 		}
 		case 5: {
 			Campamento->CargarMagos();
+			cout << "Se Cargaron Correctamente los magos: " << endl;
 			break;
 		}
 		case 6: {
